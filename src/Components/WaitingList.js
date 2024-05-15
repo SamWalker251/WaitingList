@@ -7,7 +7,7 @@ import Avatar from '@mui/material/Avatar';
 import { Button, IconButton } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { Close, Done, HourglassEmpty } from '@mui/icons-material';
-
+import {MobileView} from 'react-device-detect';
 export default function WaitingList() {
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
@@ -20,10 +20,12 @@ export default function WaitingList() {
         
         
         <ListItemText primary="Joe Walker" secondary="Jan 9, 2024"></ListItemText>
-        <Button  ></Button>
-        <Button variant="contained" href='sms:07395522218?body=Hi Joe,%0a%0aHilton driving school here. We added you to our waiting list a while ago and were wondering if you are still interested in driving lessons.%0a%0aCheers Mark' endIcon={<SendIcon />}>
-            Send
-        </Button>
+        <MobileView>
+          <Button variant="contained" href='sms:07395522218?body=Hi Joe,%0a%0aHilton driving school here. We added you to our waiting list a while ago and were wondering if you are still interested in driving lessons.%0a%0aCheers Mark' endIcon={<SendIcon />}>
+              Send
+          </Button>
+        </MobileView>
+        
         <IconButton aria-label="fingerprint" color="success">
             <Done />
         </IconButton>
@@ -40,10 +42,12 @@ export default function WaitingList() {
         
         
         <ListItemText primary="Sam Walker" secondary="Jan 9, 2024"></ListItemText>
-        <Button  ></Button>
-        <Button variant="contained" href='sms:07564282030?body=Hi Sam,%0a%0aHilton driving school here. We added you to our waiting list a while ago and were wondering if you are still interested in driving lessons.%0a%0aCheers Mark' endIcon={<SendIcon />}>
-            Send
-        </Button>
+        <MobileView>
+          <Button variant="contained" href='sms:07564282030?body=Hi Sam,%0a%0aHilton driving school here. We added you to our waiting list a while ago and were wondering if you are still interested in driving lessons.%0a%0aCheers Mark' endIcon={<SendIcon />}>
+              Send
+          </Button>
+        </MobileView>
+        
         <IconButton aria-label="fingerprint" color="success">
             <Done />
         </IconButton>
