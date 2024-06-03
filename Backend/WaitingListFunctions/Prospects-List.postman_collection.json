@@ -1,0 +1,47 @@
+{
+	"info": {
+		"_postman_id": "07090ba5-7e6d-46e6-a8c7-d45cc0fb3efa",
+		"name": "Prospects-List",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28354977"
+	},
+	"item": [
+		{
+			"name": "Prospects",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Prospects",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"FirstName\": \"Mark\",\r\n    \"SecondName\": \"Walker\",\r\n    \"Email\": \"markjasonwalker@hotmail.com\",\r\n    \"PhoneNumber\": \"07564282030\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7180/api/Prospect",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7180",
+					"path": [
+						"api",
+						"Prospect"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

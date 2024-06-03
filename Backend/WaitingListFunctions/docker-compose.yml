@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  mssqlserver:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: Password123
+    image: mcr.microsoft.com/mssql/server
+    container_name: 'waiting_list_sql'
+    hostname: 'waiting_list_sql'
+    restart: always
+    ports:
+      - "1533:1433"
+    healthcheck:
+      test: [ "CMD", "/opt/mssql-tools/bin/sqlcmd", "-U sa -P Password123 -Q 'SELECT * FROM INFORMATION_SCHEMA.TABLES'" ]
+      interval: 10s
+      retries: 10
+      timeout: 3s
