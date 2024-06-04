@@ -16,3 +16,15 @@ services:
       interval: 10s
       retries: 10
       timeout: 3s
+  prospects_test_db:
+    container_name: prospects_test_db
+    image: mcr.microsoft.com/dotnet/sdk:8.0
+    volumes:
+      - ./WaitingListTestDb:/project/WaitingListTestDb
+    working_dir: /
+    environment:
+      ProspectsDbConnectionString: "Server=tcp:waiting_list_sql,1433;Database=ProspectsDb;Persist Security Info=False;User ID=sa;Password=Password123;MultipleActiveResultSets=False;Connection Timeout=5;TrustServerCertificate=true;"
+    command: "dotnet run --project ./project/WaitingListTestDb/WaitingListTestDb.csproj"
+    depends_on:
+       mssqlserver:
+          condition: service_healthy    

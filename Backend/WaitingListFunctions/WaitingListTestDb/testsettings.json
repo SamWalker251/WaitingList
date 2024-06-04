@@ -1,0 +1,3 @@
+﻿{
+  "ProspectsDbConnectionString": "Server=.;Database=ProspectsDb;Integrated Security=SSPI;"
+}
