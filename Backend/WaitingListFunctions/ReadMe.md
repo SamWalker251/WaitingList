@@ -1,3 +1,10 @@
+## Pre-requisites
+docker desktop installed
+.net 8 sdk installed
+
+Probably want Sql Server Management Studio (ssms) or Azure Data Studio to view the database (I recommend data studio because it is less cumbersome)
+
+## Running the function app locally
 To spin up your db, open a terminal in waiting list function directory (waiting-list\Backend\WaitingListFunctions)
 and run the following command: ```docker-compose up --build```
 
