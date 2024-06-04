@@ -14,16 +14,20 @@
   
         <v-btn icon="mdi-view-module" variant="text"></v-btn>
       </v-toolbar>
-  
+      
       <v-list lines="two">
 
         <v-list-subheader inset>Wanting to start in next 30 days</v-list-subheader>
-  
+
+  <v-row justify="center">
+    <VueDatePicker month-picker/>
+  </v-row>
+
         <v-list-item
           v-for="file in upcomingWaitingList"
           :key="file.title"
           :subtitle="file.subtitle"
-          :title="file.title"
+          :title="file.firstName + ' ' + file.lastName"
         >
           <template v-slot:prepend>
             <v-avatar :color="file.color">
@@ -58,7 +62,7 @@
           v-for="file in waitingList"
           :key="file.title"
           :subtitle="file.subtitle"
-          :title="file.title"
+          :title="file.firstName + ' ' + file.lastName"
         >
           <template v-slot:prepend>
             <v-avatar :color="file.color">
@@ -87,12 +91,23 @@
         </v-list-item>
   
         <v-divider inset></v-divider>  
+        
       </v-list>
     </v-card>
+
   </template>
 
+<script setup>
+  import { ref } from 'vue';
+  import VueDatePicker from '@vuepic/vue-datepicker';
+  import '@vuepic/vue-datepicker/dist/main.css';
+
+  const date = ref(null);
+</script>
 
 <script>
+import '@vuepic/vue-datepicker/dist/main.css';
+import VueDatePicker from '@vuepic/vue-datepicker';
   export default {
     data: () => ({
         upcomingWaitingList: [
@@ -100,13 +115,15 @@
           color: 'amber',
           icon: 'mdi-account-alert',
           subtitle: 'Jan 1, 2024',
-          title: 'Sam Walker',
+          firstName: 'Sam',
+          lastName: 'Walker',
         },
         {
           color: 'amber',
           icon: 'mdi-account-alert',
           subtitle: 'Jan 2, 2024',
-          title: 'Joe Walker',
+          firstName: 'Joe',
+          lastName: 'Walker',
         },
       ],
       waitingList: [
@@ -114,21 +131,28 @@
           icon: 'mdi-account',
           color: 'green',
           subtitle: 'Jan 9, 2024',
-          title: 'Nathan Jones',
+          firstName: 'Nathan',
+          lastName: 'Jones',
         },
         {
           icon: 'mdi-account',
           color: 'green',
           subtitle: 'Jan 17, 2024',
-          title: 'Liesl Buchan',
+          firstName: 'Liesl',
+          lastName: 'Buchan',
         },
         {
           icon: 'mdi-account',
           color: 'green',
           subtitle: 'Jan 28, 2024',
-          title: 'Adam Sutton',
+          firstName: 'Adam',
+          lastName: 'Sutton',
         },
       ],
     }),
+
+    mounted() {
+      console.log('Component mounted.')
+    }
   }
 </script>
