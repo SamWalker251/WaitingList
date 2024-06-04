@@ -61,6 +61,7 @@ namespace WaitingListFunctions
         public string SecondName { get; set; } = String.Empty;
         public string Email { get; set; } = String.Empty;
         public string PhoneNumber { get; set; } = String.Empty;
+        public DateOnly? StartDate { get; set; }
     }
 
     public class ProspectContext : DbContext
