@@ -25,7 +25,7 @@ namespace WaitingListFunctions
             var prospect = new Prospect
             {
                 FirstName = bodyProspect.FirstName,
-                SecondName = bodyProspect.SecondName,
+                LastName = bodyProspect.LastName,
                 Email = bodyProspect.Email,
                 PhoneNumber = bodyProspect.PhoneNumber
             };
@@ -49,19 +49,30 @@ namespace WaitingListFunctions
     public class HttpProspect
     {
         public string FirstName { get; set; } 
-        public string SecondName { get; set; } 
+        public string LastName { get; set; } 
         public string Email { get; set; } 
         public string PhoneNumber { get; set; }
+        public DateOnly? StartDate { get; set; }
+        public string? Notes { get; set; }
+        public string Postcode { get; set; }
+        public bool IsDeleted { get; set; }
+        public bool SpecificStartDate { get; set; }
+        public bool IsConfirmed { get; set; }
     }
 
     public class Prospect
     {
         public int Id { get; set; }
         public string FirstName { get; set; } = String.Empty;
-        public string SecondName { get; set; } = String.Empty;
+        public string LastName { get; set; } = String.Empty;
         public string Email { get; set; } = String.Empty;
         public string PhoneNumber { get; set; } = String.Empty;
         public DateOnly? StartDate { get; set; }
+        public string? Notes { get; set; } = String.Empty;
+        public string Postcode { get; set; } = String.Empty;
+        public bool IsDeleted { get; set; }
+        public bool SpecificStartDate { get; set; }
+        public bool IsConfirmed { get; set; }
     }
 
     public class ProspectContext : DbContext

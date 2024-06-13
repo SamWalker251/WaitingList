@@ -17,20 +17,20 @@
     
     <v-list lines="two">
 
-      <v-list-subheader inset>Wanting to start in next 30 days</v-list-subheader>
+      <v-list-subheader inset>Wanting to start this month</v-list-subheader>
 
 <v-row justify="center">
 </v-row>
 
       <v-list-item
-        v-for="file in upcomingWaitingList"
+        v-for="file in waitingList.filter(file => new Date(file.startDate).getMonth() == new Date().getMonth())"
         :key="file.title"
         :subtitle="file.startDate"
-        :title="file.firstName + ' ' + file.secondName"
+        :title="file.firstName + ' ' + file.lastName"
       >
         <template v-slot:prepend>
-          <v-avatar :color="file.color">
-            <v-icon color="white">{{ file.icon }}</v-icon>
+          <v-avatar color="amber">
+            <v-icon color="white">{{ 'mdi-account-alert' }}</v-icon>
           </v-avatar>
         </template>
 
@@ -55,13 +55,13 @@
         </template>
       </v-list-item>
 
-      <v-list-subheader inset>Waiting</v-list-subheader>
+      <v-list-subheader inset>Waiting upcoming {{ daysInMonth(3, 2024) }}</v-list-subheader>
 
       <v-list-item
         v-for="file in waitingList"
         :key="file.title"
-        :subtitle="file.startDate"
-        :title="file.firstName + ' ' + file.secondName"
+        :subtitle="new Date(file.startDate).toLocaleString('default', { month: 'long' })"
+        :title="file.firstName + ' ' + file.lastName"
       >
         <template v-slot:prepend>
           <v-avatar color="green">
@@ -102,38 +102,44 @@ export default {
   data: () => ({
       upcomingWaitingList: [
       {
-        color: 'amber',
         icon: 'mdi-account-alert',
         startDate: 'Jan 1, 2024',
         firstName: 'Sam',
-        secondName: 'Walker',
+        lastName: 'Walker',
       },
       {
-        color: 'amber',
         icon: 'mdi-account-alert',
         startDate: 'Jan 2, 2024',
         firstName: 'Joe',
-        secondName: 'Walker',
+        lastName: 'Walker',
       },
     ],
     waitingList: [
       {
         startDate: 'Jan 9, 2024',
         firstName: 'Nathan',
-        secondName: 'Jones',
+        lastName: 'Jones',
       },
       {
         startDate: 'Jan 17, 2024',
         firstName: 'Liesl',
-        secondName: 'Buchan',
+        lastName: 'Buchan',
       },
       {
         startDate: 'Jan 28, 2024',
         firstName: 'Adam',
-        secondName: 'Sutton',
+        lastName: 'Sutton',
       },
     ],
   }),
+
+  methods: {
+    daysInMonth (month, year) {
+      return new Date(year, month, 0).getDate();
+    }
+
+
+  },
 
   mounted() {
     const apiUrl = "http://localhost:7180/api/GetProspects";
@@ -147,4 +153,6 @@ export default {
       });
   }
 }
+
+
 </script>
